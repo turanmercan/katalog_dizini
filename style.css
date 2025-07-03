@@ -1,0 +1,311 @@
+/* Genel Ayarlamalar ve Font */
+body {
+    font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #eef2f6;
+    color: #34495e;
+    line-height: 1.6;
+}
+
+/* Başlık Alanı (Header) */
+header {
+    background: linear-gradient(to right, #007bff, #0056b3);
+    color: white;
+    padding: 20px 0; /* Eski haline döndürdüm, daha ferah duruyor */
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.8em; /* Eski haline döndürdüm */
+    letter-spacing: 1px;
+}
+
+header p {
+    margin: 10px 0 0; /* Eski haline döndürdüm */
+    font-size: 1.1em;
+    opacity: 0.9;
+}
+
+footer {
+    text-align: center;
+    padding: 20px; /* Eski haline döndürdüm */
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    margin-top: 20px; /* Eski haline döndürdüm */
+    box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    font-size: 0.95em; /* Eski haline döndürdüm */
+}
+
+/* Ana İçerik Alanı ve Kapsayıcı */
+.container {
+    display: flex;
+    margin: 30px auto; /* Eski haline döndürdüm */
+    width: 92%; /* Eski haline döndürdüm */
+    max-width: 1300px; /* Eski haline döndürdüm */
+    background-color: #ffffff;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15); /* Eski haline döndürdüm */
+    border-radius: 15px; /* Eski haline döndürdüm */
+    overflow: hidden;
+    min-height: 70vh; /* Eski haline döndürdüm */
+}
+
+/* Yan Menü (Sidebar) */
+#sidebar {
+    width: 300px;
+    background-color: #f8f9fa;
+    padding: 25px;
+    border-right: 1px solid #e0e0e0;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+#sidebar h2 {
+    color: #007bff;
+    margin-top: 0;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #007bff;
+    font-size: 1.6em;
+    text-align: center;
+}
+
+/* Arama Kutusu Stilleri */
+.search-container {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.search-container input[type="text"] {
+    width: calc(100% - 25px); /* Buton için boşluk bırak */
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+.search-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745; /* Yeşil buton */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.search-container button:hover {
+    background-color: #218838;
+}
+
+.search-container .message {
+    margin-top: 10px;
+    font-size: 0.9em;
+    text-align: center;
+}
+
+#catalogTree {
+    list-style: none;
+    padding: 10px 0;
+}
+
+#catalogTree li {
+    margin-bottom: 8px;
+}
+
+#catalogTree li a {
+    text-decoration: none;
+    color: #34495e;
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    font-weight: 500;
+}
+
+#catalogTree li a:hover {
+    background-color: #e2f0ff;
+    color: #0056b3;
+    transform: translateX(5px);
+}
+
+/* Accordion Menü İkonları ve Stil */
+#catalogTree li a i {
+    margin-right: 10px;
+    color: #007bff;
+    font-size: 1.1em;
+    width: 20px;
+    text-align: center;
+}
+
+#catalogTree ul { /* Alt menüler */
+    list-style: none;
+    padding-left: 25px;
+    margin-top: 5px;
+    border-left: 2px solid #aed6f1;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    max-height: 0; /* Varsayılan olarak kapalı */
+}
+
+#catalogTree li.active > ul {
+    max-height: 500px; /* Açıldığında yeterli yükseklik */
+}
+
+#catalogTree ul li a {
+    font-size: 0.9em;
+    color: #5d6d7e;
+    padding: 10px 15px;
+}
+
+#catalogTree ul li a:hover {
+    background-color: #d8edf7;
+    color: #004085;
+}
+
+/* Ana kategori linkleri için ok işareti */
+#catalogTree li > a[href^="#"] {
+    position: relative;
+    padding-right: 30px;
+}
+
+#catalogTree li > a[href^="#"]::after {
+    content: '\f078'; /* Chevron down ikonu */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%) rotate(0deg);
+    transition: transform 0.3s ease;
+    color: #007bff;
+}
+
+#catalogTree li.active > a[href^="#"]::after {
+    transform: translateY(-50%) rotate(180deg); /* Açıldığında ok yukarı dönsün */
+}
+
+/* Aktif menü başlığı */
+#catalogTree li.active > a {
+    background-color: #e2f0ff;
+    color: #0056b3;
+    font-weight: bold;
+}
+#catalogTree li.active > a i {
+    color: #0056b3;
+}
+/* Aktif PDF link stili */
+#catalogTree li a.current-active-pdf {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+}
+#catalogTree li a.current-active-pdf i {
+    color: white;
+}
+
+
+/* Hoş Geldiniz Bölümü */
+#welcomeSection {
+    flex-grow: 1;
+    padding: 30px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* PDF Görüntüleyici Konteyneri */
+.pdf-viewer-container {
+    flex-grow: 1;
+    padding: 0;
+    box-sizing: border-box;
+    display: none; /* Başlangıçta gizli kalacak */
+}
+
+.pdf-viewer-container iframe {
+    width: 100%;
+    height: 100%; /* Tamamen kapsayıcısının yüksekliğini alacak */
+    border: 1px solid #dcdcdc; /* Kenarlık ekle */
+    border-radius: 10px; /* Köşe yuvarlatma ekle */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Gölge ekle */
+}
+
+
+/* --- Buradan itibaren önceki PDF tam ekran moduna ait kodları tamamen sildik --- */
+/* Bu CSS'te 'body.pdf-mode-active' ve ilgili tam ekran kuralları artık yok */
+
+
+/* Hızlı Geri Dönüş Linki İyileştirmeleri */
+main p a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #6c757d;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    text-align: center;
+}
+
+main p a:hover {
+    background-color: #5a6268;
+    transform: translateY(-3px);
+}
+
+main p a::before {
+    content: '\f060'; /* Arrow left ikonu */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    margin-right: 8px;
+}
+
+/* Mobil uyumluluk (Responsive Design) */
+@media (max-width: 900px) {
+    .container {
+        flex-direction: column;
+        width: 100%;
+        margin: 0;
+        border-radius: 0;
+        min-height: calc(100vh - 55px);
+    }
+
+    #sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+        border-radius: 0;
+        padding: 15px;
+    }
+
+    .pdf-viewer-container iframe {
+        height: 80vh; /* Mobil dikeyde biraz daha boşluk bırak */
+    }
+
+    main p a { /* Geri dön butonu mobil için */
+        bottom: 15px;
+        right: 15px;
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+}
